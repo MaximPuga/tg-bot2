@@ -114,16 +114,9 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 def main():
     # ЗАМЕНИ ТОКЕН НА СВОЙ (лучше использовать переменные окружения)
-    TOKEN = None
-    try:
-        import config  # type: ignore
-        TOKEN = getattr(config, '8695733465:AAFgZN9SLasbfxzYbzobF9ldKgOaEVYIxvg', None)
-    except Exception:
-        TOKEN = None
+    TOKEN = os.getenv('TELEGRAM_TOKEN')
     if not TOKEN:
-        TOKEN = os.getenv('8695733465:AAFgZN9SLasbfxzYbzobF9ldKgOaEVYIxvg')
-    if not TOKEN:
-        raise RuntimeError('8695733465:AAFgZN9SLasbfxzYbzobF9ldKgOaEVYIxvg is not set')
+        raise RuntimeError('TELEGRAM_TOKEN is not set')
     app = ApplicationBuilder().token(TOKEN).build()
     
     app.add_handler(CommandHandler('start', start))

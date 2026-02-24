@@ -1,2 +1,2 @@
 # Локальная конфигурация (этот файл в .gitignore, не попадёт на GitHub)
-TELEGRAM_TOKEN = "ВАШ_ТОКЕН_ЗДЕСЬ"
+TELEGRAM_TOKEN = "YOUR_BOT_TOKEN_HERE"
