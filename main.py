@@ -123,7 +123,7 @@ def main():
     if not TOKEN:
         TOKEN = os.getenv('8695733465:AAFgZN9SLasbfxzYbzobF9ldKgOaEVYIxvg')
     if not TOKEN:
-        raise RuntimeError('8695733465:AAFgZN9SLasbfxzYbzobF9ldKgOaEVYIxvg')
+        raise RuntimeError('8695733465:AAFgZN9SLasbfxzYbzobF9ldKgOaEVYIxvg is not set')
     app = ApplicationBuilder().token(TOKEN).build()
     
     app.add_handler(CommandHandler('start', start))
