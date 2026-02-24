@@ -113,6 +113,15 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text('Бот готов! Пришли фото (отправлю файлом) или видео.')
 
 def main():
+    # Установка FFmpeg если отсутствует (для хостинга)
+    try:
+        import subprocess
+        subprocess.run(['which', 'ffmpeg'], check=True, capture_output=True)
+    except (subprocess.CalledProcessError, FileNotFoundError):
+        print("Installing FFmpeg...")
+        subprocess.run(['apt', 'update'], check=True)
+        subprocess.run(['apt', 'install', '-y', 'ffmpeg'], check=True)
+    
     # ЗАМЕНИ ТОКЕН НА СВОЙ (лучше использовать переменные окружения)
     TOKEN = os.getenv('TELEGRAM_TOKEN')
     if not TOKEN:
